@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Interface
+namespace Shared.Services
 {
-    public interface IFine
+    public interface IBookService :IService<IBookService>
     {
+        
     }
 }

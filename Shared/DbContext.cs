@@ -4,16 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Shared.Interface;
+using Shared.Models;
 
 namespace Shared
 {
     public class LibraryDbContext:DbContext
     {
-        public DbSet<IUser> Users { get; set; }
-        public DbSet<IBook> Books { get; set; }
-        public DbSet<IBorrowRecord> BorrowRecords { get; set; }
-        public DbSet<IFine> Fines { get; set; }
-
+        internal DbSet<User> Users { get; set; }
+        internal DbSet<Book> Books { get; set; }
+        internal DbSet<BorrowRecord> BorrowRecords { get; set; }
+        internal DbSet<Fine> Fines { get; set; }
+        public LibraryDbContext() : base() { }
+        public LibraryDbContext(DbContextOptions<LibraryDbContext> dbContextOptions):base(dbContextOptions)
+        { }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql();
+        }
     }
 }
