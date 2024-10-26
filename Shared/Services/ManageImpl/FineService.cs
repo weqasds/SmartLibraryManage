@@ -1,60 +1,61 @@
-﻿using Shared.Services;
+﻿using Shared.Models;
+using Shared.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartLibraryManage.Services
+namespace Shared.Services.ManageImpl
 {
-    public class FineService : IFineService
+    public class FineService : IService<Fine>
     {
-        public int Delete(int id)
+        public int Delete(LibraryDbContext entity, int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(IFineService e)
+        public int Delete(LibraryDbContext entity, Fine e)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(IEnumerable<int> ids)
+        public int Delete(LibraryDbContext entity, IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Insert(IEnumerable<IFineService> e)
+        public int Insert(LibraryDbContext entity, IEnumerable<Fine> e)
         {
             throw new NotImplementedException();
         }
 
-        public IFineService Select(int id)
+        public Fine Select(LibraryDbContext entity, int id)
         {
             throw new NotImplementedException();
         }
 
-        public IFineService Select(IFineService e)
+        public Fine Select(LibraryDbContext entity, Fine e)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<IFineService> Select(IEnumerable<int> ids)
+        public IEnumerable<Fine> Select(LibraryDbContext entity, IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(int id)
+        public int Update(LibraryDbContext entity, int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(IFineService e)
+        public int Update(LibraryDbContext entity, Fine e)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(IEnumerable<int> ids)
+        public int Update(LibraryDbContext entity, IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }

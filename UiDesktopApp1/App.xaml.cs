@@ -1,19 +1,17 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shared;
-using Shared.Services;
 using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
-using UserLibrary.Services;
-using UserLibrary.ViewModels.Pages;
-using UserLibrary.ViewModels.Windows;
-using UserLibrary.Views.Pages;
-using UserLibrary.Views.Windows;
+using UiDesktopApp1.Services;
+using UiDesktopApp1.ViewModels.Pages;
+using UiDesktopApp1.ViewModels.Windows;
+using UiDesktopApp1.Views.Pages;
+using UiDesktopApp1.Views.Windows;
 using Wpf.Ui;
 
-namespace UserLibrary
+namespace UiDesktopApp1
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -25,7 +23,6 @@ namespace UserLibrary
         // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
         // https://docs.microsoft.com/dotnet/core/extensions/configuration
         // https://docs.microsoft.com/dotnet/core/extensions/logging
-        private LibraryDbContext _libraryDbContext;
         private static readonly IHost _host = Host
             .CreateDefaultBuilder()
             .ConfigureAppConfiguration(c => { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); })
@@ -35,15 +32,7 @@ namespace UserLibrary
 
                 // Page resolver service
                 services.AddSingleton<IPageService, PageService>();
-                services.GetServices(
-                    ServiceRole.User, 
-                    new[] {
-                        ServiceType.UserService,
-                        ServiceType.BookService,
-                        ServiceType.BorrowRecordService,
-                        ServiceType.FineService, 
-                    } 
-                    );
+
                 // Theme manipulation
                 services.AddSingleton<IThemeService, ThemeService>();
 

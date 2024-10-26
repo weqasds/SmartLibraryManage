@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Models
 {
-    internal class Fine
+    public class Fine
     {
         public int FineID { get; set; }
         public int RecordID { get; set; }

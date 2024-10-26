@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Shared.Models
 {
 
-    internal class BorrowRecord
+    public class BorrowRecord
     {
         public int RecordID { get; set; }
         public int UserID { get; set; }

@@ -1,60 +1,61 @@
-﻿using Shared.Services;
+﻿using Shared.Models;
+using Shared.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartLibraryManage.Services
+namespace Shared.Services.ManageImpl
 {
-    public class BorrowRecordService : IBorrowRecordService
+    public class BookService : IService<Book>
     {
-        public int Delete(int id)
+        public int Delete(LibraryDbContext entity, int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(IBorrowRecordService e)
+        public int Delete(LibraryDbContext entity, Book e)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(IEnumerable<int> ids)
+        public int Delete(LibraryDbContext entity, IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Insert(IEnumerable<IBorrowRecordService> e)
+        public int Insert(LibraryDbContext entity, IEnumerable<Book> e)
         {
             throw new NotImplementedException();
         }
 
-        public IBorrowRecordService Select(int id)
+        public Book Select(LibraryDbContext entity, int id)
         {
             throw new NotImplementedException();
         }
 
-        public IBorrowRecordService Select(IBorrowRecordService e)
+        public Book Select(LibraryDbContext entity, Book e)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<IBorrowRecordService> Select(IEnumerable<int> ids)
+        public IEnumerable<Book> Select(LibraryDbContext entity, IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(int id)
+        public int Update(LibraryDbContext entity, int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(IBorrowRecordService e)
+        public int Update(LibraryDbContext entity, Book e)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(IEnumerable<int> ids)
+        public int Update(LibraryDbContext entity, IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shared;
 using SmartLibraryManage.Services;
 using SmartLibraryManage.ViewModels.Pages;
 using SmartLibraryManage.ViewModels.Windows;
@@ -10,6 +12,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
+using Shared.Services;
 
 namespace SmartLibraryManage
 {
@@ -18,6 +21,7 @@ namespace SmartLibraryManage
     /// </summary>
     public partial class App
     {
+        private readonly LibraryDbContext _libraryDbContext=new LibraryDbContext();
         // The.NET Generic Host provides dependency injection, configuration, logging, and other services.
         // https://docs.microsoft.com/dotnet/core/extensions/generic-host
         // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
@@ -32,7 +36,7 @@ namespace SmartLibraryManage
 
                 // Page resolver service
                 services.AddSingleton<IPageService, PageService>();
-
+                services.GetServices(new {1,2,3 });
                 // Theme manipulation
                 services.AddSingleton<IThemeService, ThemeService>();
 
@@ -71,6 +75,7 @@ namespace SmartLibraryManage
         private void OnStartup(object sender, StartupEventArgs e)
         {
             _host.Start();
+            
         }
 
         /// <summary>

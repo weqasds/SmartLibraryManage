@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Services
+namespace UserLibrary.ViewModels.Pages
 {
-    public interface IBookService :IService<IBookService>
+    public class LoginViewModel:ObservableObject
     {
-        
     }
 }

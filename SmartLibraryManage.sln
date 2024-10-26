@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLibraryManage", "SmartLibraryManage\SmartLibraryManage.csproj", "{653D2124-789E-4C71-84FF-E7D6DEED5B7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartLibraryManage", "SmartLibraryManage\SmartLibraryManage.csproj", "{653D2124-789E-4C71-84FF-E7D6DEED5B7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserLibrary", "UserLibrary\UserLibrary.csproj", "{C75AABD4-ED75-46D5-A0E5-89E2E1E3DA3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserLibrary", "UserLibrary\UserLibrary.csproj", "{C75AABD4-ED75-46D5-A0E5-89E2E1E3DA3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{5A714EE5-ECF9-4518-ACAE-3DBCB7DEACF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{5A714EE5-ECF9-4518-ACAE-3DBCB7DEACF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

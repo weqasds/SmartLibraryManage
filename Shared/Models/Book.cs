@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Models
 {
-    internal class Book
+    public class Book 
     {
         public int BookID { get; set; }
         public string ISBN { get; set; } = string.Empty;
