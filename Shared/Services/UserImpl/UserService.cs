@@ -10,52 +10,57 @@ namespace Shared.Services.UserImpl
 {
     public class UserService : IService<User>
     {
-        public int Delete(LibraryDbContext entity, int id)
+        private LibraryDbContext _context;
+        public UserService(LibraryDbContext dbContext)
+        {
+            _context = dbContext;
+        }
+        public int Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(LibraryDbContext entity, User e)
+        public int Delete(User e)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(LibraryDbContext entity, IEnumerable<int> ids)
+        public int Delete(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Insert(LibraryDbContext entity, IEnumerable<User> e)
+        public int Insert(IEnumerable<User> e)
         {
             throw new NotImplementedException();
         }
 
-        public User Select(LibraryDbContext entity, int id)
+        public User Select(int id)
         {
             throw new NotImplementedException();
         }
 
-        public User Select(LibraryDbContext entity, User e)
+        public User Select(User e)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<User> Select(LibraryDbContext entity, IEnumerable<int> ids)
+        public IEnumerable<User> Select(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, int id)
+        public int Update(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, User e)
+        public int Update(User e)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, IEnumerable<int> ids)
+        public int Update(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }

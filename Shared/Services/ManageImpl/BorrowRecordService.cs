@@ -10,52 +10,52 @@ namespace Shared.Services.ManageImpl
 {
     public class BorrowRecordService : IService<BorrowRecord>
     {
-        public int Delete(LibraryDbContext entity, int id)
+        public int Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(LibraryDbContext entity, BorrowRecord e)
+        public int Delete(BorrowRecord e)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(LibraryDbContext entity, IEnumerable<int> ids)
+        public int Delete(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Insert(LibraryDbContext entity, IEnumerable<BorrowRecord> e)
+        public int Insert(IEnumerable<BorrowRecord> e)
         {
             throw new NotImplementedException();
         }
 
-        public BorrowRecord Select(LibraryDbContext entity, int id)
+        public BorrowRecord Select(int id)
         {
             throw new NotImplementedException();
         }
 
-        public BorrowRecord Select(LibraryDbContext entity, BorrowRecord e)
+        public BorrowRecord Select(BorrowRecord e)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<BorrowRecord> Select(LibraryDbContext entity, IEnumerable<int> ids)
+        public IEnumerable<BorrowRecord> Select(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, int id)
+        public int Update(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, BorrowRecord e)
+        public int Update(BorrowRecord e)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, IEnumerable<int> ids)
+        public int Update(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }

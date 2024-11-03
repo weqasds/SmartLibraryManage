@@ -10,52 +10,52 @@ namespace Shared.Services.ManageImpl
 {
     public class BookService : IService<Book>
     {
-        public int Delete(LibraryDbContext entity, int id)
+        public int Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(LibraryDbContext entity, Book e)
+        public int Delete(Book e)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(LibraryDbContext entity, IEnumerable<int> ids)
+        public int Delete(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Insert(LibraryDbContext entity, IEnumerable<Book> e)
+        public int Insert(IEnumerable<Book> e)
         {
             throw new NotImplementedException();
         }
 
-        public Book Select(LibraryDbContext entity, int id)
+        public Book Select(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Book Select(LibraryDbContext entity, Book e)
+        public Book Select(Book e)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Book> Select(LibraryDbContext entity, IEnumerable<int> ids)
+        public IEnumerable<Book> Select(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, int id)
+        public int Update(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, Book e)
+        public int Update(Book e)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, IEnumerable<int> ids)
+        public int Update(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }

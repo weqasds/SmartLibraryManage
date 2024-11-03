@@ -15,11 +15,12 @@ namespace Shared
         internal DbSet<BorrowRecord> BorrowRecords { get; set; }
         internal DbSet<Fine> Fines { get; set; }
         public LibraryDbContext() : base() { }
+        //DbContextOptions<LibraryDbContext> dbContextOptions
         public LibraryDbContext(DbContextOptions<LibraryDbContext> dbContextOptions):base(dbContextOptions)
         { }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql();
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseNpgsql();
+        //}
     }
 }

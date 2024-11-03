@@ -10,52 +10,55 @@ namespace Shared.Services.UserImpl
 {
     public class FineService : IService<Fine>
     {
-        public int Delete(LibraryDbContext entity, int id)
+        LibraryDbContext _context;
+
+        public FineService(LibraryDbContext dbContext)=>_context = dbContext;
+        public int Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(LibraryDbContext entity, Fine e)
+        public int Delete(Fine e)
         {
             throw new NotImplementedException();
         }
 
-        public int Delete(LibraryDbContext entity, IEnumerable<int> ids)
+        public int Delete(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Insert(LibraryDbContext entity, IEnumerable<Fine> e)
+        public int Insert(IEnumerable<Fine> e)
         {
             throw new NotImplementedException();
         }
 
-        public Fine Select(LibraryDbContext entity, int id)
+        public Fine Select(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Fine Select(LibraryDbContext entity, Fine e)
+        public Fine Select(Fine e)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Fine> Select(LibraryDbContext entity, IEnumerable<int> ids)
+        public IEnumerable<Fine> Select(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, int id)
+        public int Update(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, Fine e)
+        public int Update(Fine e)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(LibraryDbContext entity, IEnumerable<int> ids)
+        public int Update(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }

@@ -1,53 +1,42 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shared;
-using Shared.Services;
-using System.IO;
-using System.Reflection;
+using System.Configuration;
+using System.Data;
+using System.Windows;
 using System.Windows.Threading;
-using UserLibrary.Services;
-using UserLibrary.ViewModels.Pages;
-using UserLibrary.ViewModels.Windows;
-using UserLibrary.Views.Pages;
-using UserLibrary.Views.Windows;
 using Wpf.Ui;
+using WpfTest.Service;
+using WpfTest.VIewModels;
+using WpfTest.Views.Pages;
 
-namespace UserLibrary
+namespace WpfTest
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App
+    public partial class App : Application
     {
-        // The.NET Generic Host provides dependency injection, configuration, logging, and other services.
-        // https://docs.microsoft.com/dotnet/core/extensions/generic-host
-        // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
-        // https://docs.microsoft.com/dotnet/core/extensions/configuration
-        // https://docs.microsoft.com/dotnet/core/extensions/logging
         private static readonly IHost _host = Host
             .CreateDefaultBuilder()
-            .ConfigureAppConfiguration(c => { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); })
             .ConfigureServices((context, services) =>
             {
                 services.AddHostedService<ApplicationHostService>();
-                services.AddDbContext<LibraryDbContext>(
-                    options => {
-                        options.UseNpgsql("");
-                    }
-                );
+                //services.AddDbContext<LibraryDbContext>(
+                //    options => {
+                //        options.UseNpgsql("");
+                //    }
+                //);
                 // Page resolver service
                 services.AddSingleton<IPageService, PageService>();
-                services.GetServices(
-                    ServiceRole.User, 
-                    new[] {
-                        ServiceType.UserService,
-                        ServiceType.BookService,
-                        ServiceType.BorrowRecordService,
-                        ServiceType.FineService, 
-                    } 
-                    );
+                //services.GetServices(
+                //    ServiceRole.User,
+                //    new[] {
+                //        ServiceType.UserService,
+                //        ServiceType.BookService,
+                //        ServiceType.BorrowRecordService,
+                //        ServiceType.FineService,
+                //    }
+                //    );
                 // Theme manipulation
                 services.AddSingleton<IThemeService, ThemeService>();
 
@@ -59,7 +48,7 @@ namespace UserLibrary
 
                 // Main window with navigation
                 services.AddSingleton<INavigationWindow, MainWindow>();
-                services.AddSingleton<MainWindowViewModel>();
+                services.AddSingleton<MainViewModel>();
 
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
@@ -67,8 +56,6 @@ namespace UserLibrary
                 services.AddSingleton<DataViewModel>();
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
-                services.AddSingleton<RegisterUserPage>();
-                services.AddSingleton<RegisterViewModel>();
             }).Build();
 
         /// <summary>
@@ -108,4 +95,5 @@ namespace UserLibrary
             // For more info see https://docs.microsoft.com/en-us/dotnet/api/system.windows.application.dispatcherunhandledexception?view=windowsdesktop-6.0
         }
     }
+
 }

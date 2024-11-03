@@ -6,10 +6,11 @@
     xmlns:local="clr-namespace:UserLibrary.Views.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}"
+    xmlns:vm_window="clr-namespace:UserLibrary.ViewModels.Windows"
+    Title="{Binding Path=ApplicationTitle, Mode=OneWay}"
     Width="1100"
     Height="650"
-    d:DataContext="{d:DesignInstance local:MainWindow,
+    d:DataContext="{d:DesignInstance vm_window:MainWindowViewModel,
                                      IsDesignTimeCreatable=True}"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -31,11 +32,11 @@
             Grid.Row="1"
             Padding="42,0,42,0"
             BreadcrumbBar="{Binding ElementName=BreadcrumbBar}"
-            FooterMenuItemsSource="{Binding ViewModel.FooterMenuItems, Mode=OneWay}"
+            FooterMenuItemsSource="{Binding Path=FooterMenuItems, Mode=OneWay}"
             FrameMargin="0"
             IsBackButtonVisible="Visible"
             IsPaneToggleVisible="True"
-            MenuItemsSource="{Binding ViewModel.MenuItems, Mode=OneWay}"
+            MenuItemsSource="{Binding Path=MenuItems, Mode=OneWay}"
             PaneDisplayMode="LeftFluent">
             <ui:NavigationView.Header>
                 <ui:BreadcrumbBar x:Name="BreadcrumbBar" Margin="42,32,42,20" />
@@ -54,7 +55,7 @@
 
         <ui:TitleBar
             x:Name="TitleBar"
-            Title="{Binding ViewModel.ApplicationTitle}"
+            Title="{Binding Path=ApplicationTitle}"
             Grid.Row="0"
             CloseWindowByDoubleClickOnIcon="True">
             <ui:TitleBar.Icon>

@@ -15,8 +15,8 @@ namespace UserLibrary.Views.Windows
             INavigationService navigationService
         )
         {
-            ViewModel = viewModel;
-            DataContext = this;
+            //ViewModel = viewModel;
+            DataContext = viewModel;
 
             SystemThemeWatcher.Watch(this);
 
@@ -30,7 +30,9 @@ namespace UserLibrary.Views.Windows
 
         public INavigationView GetNavigation() => RootNavigation;
 
-        public bool Navigate(Type pageType) => RootNavigation.Navigate(pageType);
+        public bool Navigate(Type pageType) { 
+           return RootNavigation.Navigate(pageType); 
+        }
 
         public void SetPageService(IPageService pageService) => RootNavigation.SetPageService(pageService);
 
