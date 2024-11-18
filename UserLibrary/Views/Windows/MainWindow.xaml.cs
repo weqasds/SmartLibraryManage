@@ -7,7 +7,7 @@ namespace UserLibrary.Views.Windows
 {
     public partial class MainWindow : INavigationWindow
     {
-        public MainWindowViewModel ViewModel { get; }
+        //public MainWindowViewModel ViewModel { get; }
 
         public MainWindow(
             MainWindowViewModel viewModel,

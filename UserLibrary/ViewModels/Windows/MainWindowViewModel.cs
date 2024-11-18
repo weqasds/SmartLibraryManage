@@ -28,6 +28,12 @@ namespace UserLibrary.ViewModels.Windows
                 Content="Register",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
                 TargetPageType= typeof(Views.Pages.RegisterUserPage)
+            },
+            new NavigationViewItem()
+            {
+                Content="Login",
+                Icon=new SymbolIcon { Symbol = SymbolRegular.AccessibilityCheckmark20 },
+                TargetPageType=typeof(Views.Pages.LoginPage)
             }
         };
 

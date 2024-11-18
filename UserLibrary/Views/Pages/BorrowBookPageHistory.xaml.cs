@@ -18,9 +18,9 @@ namespace UserLibrary.Views.Pages
     /// <summary>
     /// BorrowBookPage.xaml 的交互逻辑
     /// </summary>
-    public partial class BorrowBookPage : Page
+    public partial class BorrowBookPageHistory : Page
     {
-        public BorrowBookPage()
+        public BorrowBookPageHistory()
         {
             InitializeComponent();
         }

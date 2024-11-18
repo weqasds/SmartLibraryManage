@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDB", "TestDB\TestDB.csproj", "{BC0CA1E6-FBBD-4877-967B-B742F3DC6D2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTest", "WpfTest\WpfTest.csproj", "{145F9E37-F655-494A-A2FA-07EA19631A7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfTest", "WpfTest\WpfTest.csproj", "{145F9E37-F655-494A-A2FA-07EA19631A7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

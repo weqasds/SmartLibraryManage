@@ -7,8 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:UserLibrary.Models"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:vm_page="clr-namespace:UserLibrary.ViewModels.Pages"
     Title="DataPage"
-    d:DataContext="{d:DesignInstance local:DataPage,
+    d:DataContext="{d:DesignInstance vm_page:DataViewModel,
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -21,7 +22,7 @@
     <Grid>
         <ui:VirtualizingItemsControl
             Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-            ItemsSource="{Binding ViewModel.Colors, Mode=OneWay}"
+            ItemsSource="{Binding Colors, Mode=OneWay}"
             VirtualizingPanel.CacheLengthUnit="Item">
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:DataColor}">

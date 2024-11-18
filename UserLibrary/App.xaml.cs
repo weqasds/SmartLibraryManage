@@ -58,17 +58,25 @@ namespace UserLibrary
                 services.AddSingleton<INavigationService, NavigationService>();
 
                 // Main window with navigation
+                #region 窗口注册
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
+                #endregion
 
+                #region Page界面注册
                 services.AddSingleton<DashboardPage>();
-                services.AddSingleton<DashboardViewModel>();
                 services.AddSingleton<DataPage>();
-                services.AddSingleton<DataViewModel>();
                 services.AddSingleton<SettingsPage>();
-                services.AddSingleton<SettingsViewModel>();
                 services.AddSingleton<RegisterUserPage>();
+                services.AddSingleton<LoginPage>();
+                #endregion
+                #region ViewModel注册
+                services.AddSingleton<DashboardViewModel>();
+                services.AddSingleton<DataViewModel>();
+                services.AddSingleton<SettingsViewModel>();
                 services.AddSingleton<RegisterViewModel>();
+                services.AddSingleton<LoginViewModel>();
+                #endregion
             }).Build();
 
         /// <summary>
@@ -79,7 +87,7 @@ namespace UserLibrary
         public static T GetService<T>()
             where T : class
         {
-            return _host.Services.GetService(typeof(T)) as T;
+            return _host.Services.GetRequiredService(typeof(T)) as T;
         }
 
         /// <summary>

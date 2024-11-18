@@ -9,8 +9,8 @@ namespace UserLibrary.Views.Pages
 
         public DataPage(DataViewModel viewModel)
         {
-            ViewModel = viewModel;
-            DataContext = this;
+            //ViewModel = viewModel;
+            DataContext = viewModel;
 
             InitializeComponent();
         }
