@@ -8,33 +8,40 @@ using System.Threading.Tasks;
 
 namespace Shared.Services.UserImpl
 {
-    public class BorrowRecordService : IService<BorrowRecord>
+    public class BorrowRecordService(LibraryDbContext _context) : IService<BorrowRecord>
     {
-        private LibraryDbContext _context;
-        public BorrowRecordService(LibraryDbContext dbContext) => _context = dbContext;
+        
+        public LibraryDbContext Context {get {return _context;}}
+
+        public int Insert(IEnumerable<BorrowRecord> e)
+        {
+            return this.InsertDefault(e);
+        }
         public int Delete(int id)
         {
-            throw new NotImplementedException();
+            return this.DeleteDefault(id);
         }
 
         public int Delete(BorrowRecord e)
         {
-            throw new NotImplementedException();
+            var deleteBorrowRecord = _context.BorrowRecords.FirstOrDefault(item => item == e);
+            if (deleteBorrowRecord == null)return 0;
+            _context.BorrowRecords.Remove(deleteBorrowRecord);
+            return _context.SaveChanges();
         }
 
         public int Delete(IEnumerable<int> ids)
         {
-            throw new NotImplementedException();
-        }
-
-        public int Insert(IEnumerable<BorrowRecord> e)
-        {
-            throw new NotImplementedException();
+            var deleteBorrowRecords = _context.BorrowRecords.Where(item=>ids.Contains(item.RecordID));
+            if (!deleteBorrowRecords.Any()) return 0;
+            _context.BorrowRecords.RemoveRange(deleteBorrowRecords);
+            return _context.SaveChanges();
+            
         }
 
         public BorrowRecord Select(int id)
         {
-            throw new NotImplementedException();
+            return this.SelectDefault(id);
         }
 
         public BorrowRecord Select(BorrowRecord e)
@@ -46,20 +53,38 @@ namespace Shared.Services.UserImpl
         {
             throw new NotImplementedException();
         }
-
-        public int Update(int id)
+        public int Update(BorrowRecord value)
         {
+            var updateBorrowRecord = _context.BorrowRecords.Find(value.RecordID);
+            if (updateBorrowRecord == null) return 0;
+            _context.Entry(updateBorrowRecord).CurrentValues.SetValues(value);
+            updateBorrowRecord.UpdateTime = DateTime.Now;
+            return _context.SaveChanges();
+        }
+
+        public int Update(int id, BorrowRecord value)
+        {
+            var updateBorrowRecord = _context.BorrowRecords.Find(id);
+            if (updateBorrowRecord == null) return 0;
+            value.RecordID = id;
+            _context.Entry(updateBorrowRecord).CurrentValues.SetValues(value);
             throw new NotImplementedException();
         }
 
-        public int Update(BorrowRecord e)
-        {
-            throw new NotImplementedException();
-        }
 
-        public int Update(IEnumerable<int> ids)
+        public int Update(IEnumerable<int> ids, IEnumerable<BorrowRecord> values)
         {
-            throw new NotImplementedException();
+            var updateBorrowRecords = from record in _context.BorrowRecords
+                                      join id in ids on record.RecordID equals id
+                                      select record;
+            foreach (var record in updateBorrowRecords)
+            {
+                var updateValue = values.FirstOrDefault(item => item.RecordID == record.RecordID);
+                if (updateValue == null) continue;
+                _context.Entry(record).CurrentValues.SetValues(updateValue);
+                record.UpdateTime = DateTime.Now;
+            }
+            return _context.SaveChanges();  
         }
     }
 }

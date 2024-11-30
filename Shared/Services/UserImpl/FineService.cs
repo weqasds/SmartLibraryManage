@@ -10,33 +10,42 @@ namespace Shared.Services.UserImpl
 {
     public class FineService : IService<Fine>
     {
-        LibraryDbContext _context;
+        private LibraryDbContext _context;
 
-        public FineService(LibraryDbContext dbContext)=>_context = dbContext;
+        public LibraryDbContext Context
+        {
+            get { return _context; }
+        }
+
+        public FineService(LibraryDbContext context) => _context = context;
+
+        public int Insert(IEnumerable<Fine> e)
+        {
+            return this.InsertDefault(e);
+        }
+
         public int Delete(int id)
         {
-            throw new NotImplementedException();
+            return this.DeleteDefault(id);
         }
 
         public int Delete(Fine e)
         {
-            throw new NotImplementedException();
+            var deleteFine = _context.Fines.FirstOrDefault(item => item == e);
+            if (deleteFine == null) return 0;
+            _context.Fines.Remove(deleteFine);
+            return _context.SaveChanges();
         }
 
         public int Delete(IEnumerable<int> ids)
         {
-            throw new NotImplementedException();
+            var deleteFines = _context.Fines.Where(item => ids.Contains(item.FineID));
+            if (!deleteFines.Any()) return 0;
+            _context.Fines.RemoveRange(deleteFines);
+            return _context.SaveChanges();
         }
 
-        public int Insert(IEnumerable<Fine> e)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Fine Select(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public Fine Select(int id) => this.SelectDefault(id);
 
         public Fine Select(Fine e)
         {
@@ -48,19 +57,44 @@ namespace Shared.Services.UserImpl
             throw new NotImplementedException();
         }
 
-        public int Update(int id)
+        public int Update(Fine value)
         {
-            throw new NotImplementedException();
+            var fine = _context.Fines.Find(value.FineID);
+            if (fine == null) return 0;
+            _context.Entry(fine).CurrentValues.SetValues(value);
+            fine.UpdateTime = DateTime.Now;
+            return _context.SaveChanges();
         }
 
-        public int Update(Fine e)
+        public int Update(int id, Fine value)
         {
-            throw new NotImplementedException();
+            var fine = _context.Fines.Find(id);
+            if (fine == null) return 0;
+            value.FineID = id;
+            _context.Entry(fine).CurrentValues.SetValues(value);
+            return _context.SaveChanges();
         }
 
-        public int Update(IEnumerable<int> ids)
+
+        public int Update(IEnumerable<int> ids, IEnumerable<Fine> values)
         {
-            throw new NotImplementedException();
+            var fines = from value in _context.Fines
+                where ids.Contains(value.FineID)
+                select value;
+            // 使用Join操作来减少循环中的查询次数，提升效率
+            var updatesMap = values.ToDictionary(v => v.FineID, v => v);
+
+            foreach (var fine in fines)
+            {
+                if (updatesMap.TryGetValue(fine.FineID, out var updateValue))
+                {
+                    // 使用Entity Framework的SetValues方法批量更新属性
+                    _context.Entry(fine).CurrentValues.SetValues(updateValue);
+                    // 更新UpdateTime字段
+                    fine.UpdateTime = DateTime.Now;
+                }
+            }
+           return _context.SaveChanges();
         }
     }
 }

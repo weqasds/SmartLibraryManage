@@ -36,7 +36,7 @@ namespace SmartLibraryManage
 
                 // Page resolver service
                 services.AddSingleton<IPageService, PageService>();
-                services.GetServices(new {1,2,3 });
+                //services.GetServices(new {1,2,3 });
                 // Theme manipulation
                 services.AddSingleton<IThemeService, ThemeService>();
 
