@@ -18,7 +18,7 @@ namespace Shared.Services.UserImpl
         public int Delete(int id)
         {
 
-            //var book = _context.Books.Single(e => e.BookID == id);
+            //var book = _context.Books.Single(e => e.Bookid == id);
 
             //_context.Entry(book).State = EntityState.Deleted;
             var deleteBook = _context.Books.Find(id);
@@ -37,7 +37,7 @@ namespace Shared.Services.UserImpl
 
         public int Delete(IEnumerable<int> ids)
         {
-            var deleteBooks = _context.Books.Where(b => ids.Contains(b.BookID));
+            var deleteBooks = _context.Books.Where(b => ids.Contains(b.Bookid));
             if (!deleteBooks.Any()) return 0;
             _context.Books.RemoveRange(deleteBooks);
             return _context.SaveChanges();
@@ -45,8 +45,11 @@ namespace Shared.Services.UserImpl
 
         public int Insert(IEnumerable<Book> e)
         {
-            if(!e.Any()) return 0;
-            _context.Books.AddRange(e);
+            return this.InsertDefault(e);
+        }
+        public int Insert(Book values)
+        {
+            _context.Books.Add(values);
             return _context.SaveChanges();
         }
 
@@ -67,7 +70,7 @@ namespace Shared.Services.UserImpl
         public IEnumerable<Book> Select(IEnumerable<int> ids)
         {
 
-            return _context.Books.Where(b => ids.Contains(b.BookID));
+            return _context.Books.Where(b => ids.Contains(b.Bookid));
         }
 
         public int Update(int id, Book value)
@@ -75,33 +78,33 @@ namespace Shared.Services.UserImpl
             var book = _context.Books.Find(id);
 
             if (book == null) return 0;
-            value.BookID = id;
+            value.Bookid = id;
             _context.Entry(book).CurrentValues.SetValues(value);
             return _context.SaveChanges();
         }
 
         public int Update(Book value)
         {
-            var book = _context.Books.FirstOrDefault(b => b.BookID == value.BookID);
+            var book = _context.Books.FirstOrDefault(b => b.Bookid == value.Bookid);
             if (book == null) return 0;
             _context.Entry(book).CurrentValues.SetValues(value);
-            book.UpdateTime = DateTime.Now;
+            book.Updatetime = DateTime.Now;
             return _context.SaveChanges();
         }
 
         public int Update(IEnumerable<int> ids, IEnumerable<Book> values)
         {
             var books = from book in _context.Books
-                        where ids.Contains(book.BookID)
+                        where ids.Contains(book.Bookid)
                         select book; 
             
             foreach (var item in books)
             {
-                var updateValue = values.FirstOrDefault(v => v.BookID == item.BookID);
+                var updateValue = values.FirstOrDefault(v => v.Bookid == item.Bookid);
                 if (updateValue != null)
                 {
                     _context.Entry(item).CurrentValues.SetValues(updateValue);
-                    item.UpdateTime = DateTime.Now;
+                    item.Updatetime = DateTime.Now;
                 }
             }
             return _context.SaveChanges();

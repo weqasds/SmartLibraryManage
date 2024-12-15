@@ -64,7 +64,7 @@ namespace Shared.Services
                                 servicesCollection.AddSingleton<IService<Book>, UserImpl.BookService>();
                                 break;
                             case ServiceType.BorrowRecordService:
-                                servicesCollection.AddSingleton<IService<BorrowRecord>, UserImpl.BorrowRecordService>();
+                                servicesCollection.AddSingleton<IService<Borrowrecord>, UserImpl.BorrowRecordService>();
                                 break;
                             case ServiceType.FineService:
                                 servicesCollection.AddSingleton<IService<Fine>, UserImpl.FineService>();
@@ -86,7 +86,7 @@ namespace Shared.Services
                                 servicesCollection.AddSingleton<IService<Book>, UserImpl.BookService>();
                                 break;
                             case ServiceType.BorrowRecordService:
-                                servicesCollection.AddSingleton<IService<BorrowRecord>, UserImpl.BorrowRecordService>();
+                                servicesCollection.AddSingleton<IService<Borrowrecord>, UserImpl.BorrowRecordService>();
                                 break;
                             case ServiceType.FineService:
                                 servicesCollection.AddSingleton<IService<Fine>, UserImpl.FineService>();
@@ -115,7 +115,7 @@ namespace Shared.Services
                             servicesCollection.AddSingleton<IService<Book>, UserImpl.BookService>();
                             break;
                         case ServiceType.BorrowRecordService:
-                            servicesCollection.AddSingleton<IService<BorrowRecord>, UserImpl.BorrowRecordService>();
+                            servicesCollection.AddSingleton<IService<Borrowrecord>, UserImpl.BorrowRecordService>();
                             break;
                         case ServiceType.FineService:
                             servicesCollection.AddSingleton<IService<Fine>, UserImpl.FineService>();

@@ -16,10 +16,10 @@ namespace Shared.Services.UserImpl
 
         public int Delete(int id)
         {
-            var deleteUser = _context.Users.FirstOrDefault(book => book.UserID == id);
+            var deleteUser = _context.Users.FirstOrDefault(book => book.Userid == id);
             Console.WriteLine(deleteUser);
             IEnumerable<User> deleteUser1 = from user in _context.Users
-                                            where user.UserID == id
+                                            where user.Userid == id
                                             select user;
             foreach (var book in deleteUser1)
             {
@@ -32,25 +32,28 @@ namespace Shared.Services.UserImpl
 
         public int Delete(User e)
         {
-            return Delete(e.UserID);
+            return Delete(e.Userid);
             throw new NotImplementedException();
         }
 
         public int Delete(IEnumerable<int> ids)
         {
             IEnumerable<User> deleteUsers= from user in _context.Users
-                                           where ids.Contains(user.UserID)
+                                           where ids.Contains(user.Userid)
                                            select user;
             if(deleteUsers==null) return 0;
             _context.Users.RemoveRange(deleteUsers);
             return _context.SaveChanges();
         }
+        public int Insert(User e)
+        {
+            _context.Users.Add(e);
+            return _context.SaveChanges();
+        }
 
         public int Insert(IEnumerable<User> e)
         {
-            if(e==null) return 0;
-            _context.Users.AddRangeAsync(e);
-            return _context.SaveChanges();
+            return this.InsertDefault(e);
         }
 
         public User Select(int id)=> this.SelectDefault(id);
@@ -67,7 +70,7 @@ namespace Shared.Services.UserImpl
         public IEnumerable<User> Select(IEnumerable<int> ids)
         {
             var users= from user in _context.Users
-                       where ids.Contains(user.UserID)
+                       where ids.Contains(user.Userid)
                        select user;
             _context.SaveChanges();
             return users;
@@ -78,28 +81,28 @@ namespace Shared.Services.UserImpl
         {
             var user = _context.Users.Find(id);
             if (user == null) return 0;
-            value.UserID = id;
+            value.Userid = id;
             _context.Entry(user).CurrentValues.SetValues(value);
             return _context.SaveChanges();
         }
 
         public int Update(User value)
         {
-            var user=_context.Users.Find(value.UserID);
+            var user=_context.Users.Find(value.Userid);
             if(user==null)
             {
                 return _context.SaveChanges();
                 //啥也没找到
             }
             _context.Entry(user).CurrentValues.SetValues(value);
-            user.UpdateTime = DateTime.Now;
+            user.Updatetime = DateTime.Now;
             return _context.SaveChanges();
         }
 
         public int Update(IEnumerable<int> ids,IEnumerable<User> values)
         {
             var users =from user in _context.Users
-                       where ids.Contains(user.UserID)
+                       where ids.Contains(user.Userid)
                        select user;
 
             _context.Users.UpdateRange(users);

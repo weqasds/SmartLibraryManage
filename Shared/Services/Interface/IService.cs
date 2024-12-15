@@ -12,6 +12,7 @@ namespace Shared.Services.Interface
 
         //插入指定一批数据
         int Insert(IEnumerable<T> e);
+        int Insert(T e);
         //更新指定数据--三种重载 通过id 通过对象 通过一组id更新一系列
         int Update(int id,T value);
         int Update(T e);

@@ -20,29 +20,34 @@
 
     <Grid>
         <StackPanel>
-            <ui:Anchor Margin="0,0,0,70" HorizontalAlignment="Stretch" />
+            <ui:Anchor
+                Margin="0,0,0,70"
+                HorizontalAlignment="Stretch"
+                Visibility="Hidden" />
             <ui:TextBlock
                 HorizontalAlignment="Center"
                 dsui:Text="注册界面"
                 FontSize="50"
                 Text="" />
-            <ui:Anchor HorizontalAlignment="Stretch" />
+            <ui:Anchor HorizontalAlignment="Stretch" Visibility="Hidden" />
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <ui:TextBlock
                     Padding="10"
                     dsui:Text="账户名字:"
-                    FontSize="15" />
+                    FontSize="15"
+                    Text="账户名字" />
                 <ui:TextBox MinWidth="200" Text="{Binding UserName}" />
             </StackPanel>
-            <ui:Anchor HorizontalAlignment="Stretch" />
+            <ui:Anchor HorizontalAlignment="Stretch" Visibility="Hidden" />
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <ui:TextBlock
                     Padding="10"
                     dsui:Text="账户密码:"
-                    FontSize="15" />
-                <ui:PasswordBox MinWidth="200" Text="{Binding PassWord}" />
+                    FontSize="15"
+                    Text="账户密码" />
+                <ui:PasswordBox MinWidth="200" Password="{Binding PassWord, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
-            <ui:Anchor HorizontalAlignment="Stretch" />
+            <ui:Anchor HorizontalAlignment="Stretch" Visibility="Hidden" />
             <StackPanel MinWidth="283.61" HorizontalAlignment="Center">
                 <ui:Button
                     HorizontalAlignment="Stretch"

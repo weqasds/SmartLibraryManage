@@ -1,0 +1,61 @@
+﻿成员变量使用小驼峰
+xmlns:dsui="http://schemas.lepo.co/wpfui/2022/xaml/design" 为WPFUI的设计时特性
+ObservablePorperty 特性 生成代码 https://learn.microsoft.com/zh-cn/dotnet/communitytoolkit/mvvm/generators/observableproperty
+RelayCommand 特性 生成代码 https://learn.microsoft.com/zh-cn/dotnet/communitytoolkit/mvvm/generators/relaycommand
+xmlns:vm_page="clr-namespace:UserLibrary.ViewModels.Pages" Page页面的ViewModel注释
+xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" ModernUI库命名空间
+xmlns:mui="http://schemas.inkore.net/lib/ui/wpf/modern" iNokeModernUI库命名空间
+xmlns:dsmui="http://schemas.inkore.net/lib/ui/wpf/modern/design" iNokeModernUI设计时命名空间
+xmlns:dsui="http://schemas.lepo.co/wpfui/2022/xaml/design" ModernUI设计时命名空间
+
+
+切换到后台新建窗口
+
+await App.Current.MainWindow.Dispatcher.InvokeAsync(() =>
+            {
+                App.Current.MainWindow.IsEnabled = false;
+                App.Current.MainWindow.Background = new SolidColorBrush(Color.FromArgb(150, 0, 0, 0));
+            });
+            
+            
+            //App.Current.MainWindow.IsEnabled = false;
+            //App.Current.MainWindow.Background = new SolidColorBrush(Color.FromArgb(150, 0, 0, 0));
+            //Window window = new Window
+            //{
+            //    Owner = App.Current.MainWindow,
+            //    Content = App.GetService<SettingsPage>(),
+            //    //DataContext = App.GetService<SettingsViewModel>(),
+
+
+            //};
+
+            //window.Loaded += (s,e)=>{
+            //    window.Closed += (s, e) =>
+            //    {
+            //        App.Current.MainWindow.IsEnabled = true;
+            //        switch ((((window.Content as SettingsPage).DataContext as SettingsViewModel).CurrentTheme))
+            //        {
+            //            case ApplicationTheme.Light:
+            //                ApplicationThemeManager.Apply(ApplicationTheme.Light);
+            //                break;
+            //            case ApplicationTheme.Dark:
+            //                ApplicationThemeManager.Apply(ApplicationTheme.Dark);
+            //                break;
+            //            case ApplicationTheme.Unknown:
+            //                ApplicationThemeManager.Apply(ApplicationTheme.Light);
+            //                break;
+            //            case ApplicationTheme.HighContrast:
+            //                ApplicationThemeManager.Apply(ApplicationTheme.Light);
+            //                break;
+            //            default:
+            //                ApplicationThemeManager.Apply(ApplicationTheme.Light);
+            //                break;
+            //        }
+
+            //    };
+            //};
+
+            //window.ShowDialog();
+
+            //App.Current.MainWindow.Background = Brushes.White;
+        }

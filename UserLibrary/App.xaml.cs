@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared;
 using Shared.Services;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
@@ -34,11 +35,11 @@ namespace UserLibrary
                 services.AddHostedService<ApplicationHostService>();
                 services.AddDbContext<LibraryDbContext>(
                     options => {
-                        options.UseNpgsql("");
+                        options.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=@qq13015461197;Database=LibraryManage;");
                     }
                 );
                 // Page resolver service
-                services.AddSingleton<IPageService, PageService>();
+                #region 数据库服务注册
                 services.GetServices(
                     ServiceRole.User, 
                     new[] {
@@ -48,6 +49,9 @@ namespace UserLibrary
                         ServiceType.FineService, 
                     } 
                     );
+                Debug.WriteLine(services.ToString());
+                #endregion
+                services.AddSingleton<IPageService, PageService>();
                 // Theme manipulation
                 services.AddSingleton<IThemeService, ThemeService>();
 
@@ -61,6 +65,7 @@ namespace UserLibrary
                 #region 窗口注册
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
+                services.AddTransient<PageContainer>();
                 #endregion
 
                 #region Page界面注册
@@ -87,7 +92,14 @@ namespace UserLibrary
         public static T GetService<T>()
             where T : class
         {
+            
             return _host.Services.GetRequiredService(typeof(T)) as T;
+        }
+        public static Window CreateNewWindow<T>(T page)where T:class
+        {
+            var window= _host.Services.GetRequiredService<PageContainer>();
+            window.DataContext = page;
+            return window;
         }
 
         /// <summary>
