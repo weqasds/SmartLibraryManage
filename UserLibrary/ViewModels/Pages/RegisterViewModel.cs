@@ -22,12 +22,12 @@ namespace UserLibrary.ViewModels.Pages
         [Required]
         [ObservableProperty]
         [MinLength(1)]
-        private string userName=string.Empty;
+        private string? username;
         [Required]
         [MinLength(8)]
         [MaxLength(20)]
         [ObservableProperty]
-        private string passWord=string.Empty;
+        private string? password;
         public RegisterViewModel(IService<Shared.Models.User> userService)
         {
             _userService = userService;
@@ -53,14 +53,14 @@ namespace UserLibrary.ViewModels.Pages
             //    return _userService.Insert(user);
             //});*/
 #if DEBUG
-            Debug.WriteLine(passWord);
+            Debug.WriteLine(Password);
 #endif
             ValidateAllProperties();
-            if (UserName!=string.Empty&&PassWord!=string.Empty) {
+            if (Username!=string.Empty&& Password != string.Empty) {
                 var user = new Shared.Models.User()
                 {
-                    Username = UserName,
-                    Password = PassWord,
+                    Username = Username,
+                    Password = Password,
                     Role = "user"
                 };
                 var result = _userService.Insert(user);
@@ -81,9 +81,9 @@ namespace UserLibrary.ViewModels.Pages
 
         }
 
-        partial void OnPassWordChanged(string value)
+        partial void OnPasswordChanged(string? value)
         {
-            Debug.WriteLine(passWord);
+            Debug.WriteLine(Password);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SmartLibraryManage.ViewModels.Pages;
+using SmartLibraryManage.ViewModels.Pages.SystemSettingManage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +22,18 @@ namespace SmartLibraryManage.Views.Pages
     /// </summary>
     public partial class LoginView : Page
     {
-        public LoginView()
+        public LoginView(LoginViewModel viewModel, SettingsViewModel settingsViewModel)
         {
+            DataContext = viewModel;
+
             InitializeComponent();
-            DataContext = new ViewModels.Pages.LoginViewModel();
+            this.Spilt_ViewContent.DataContext = settingsViewModel;
+        }
+        [RelayCommand]
+        private void SettingOpen()
+        {
+            this.SplitView.IsPaneOpen = true;
+
         }
     }
 }

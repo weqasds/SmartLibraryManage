@@ -3,14 +3,148 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dsmui="http://schemas.inkore.net/lib/ui/wpf/modern/design"
+    xmlns:dsui="http://schemas.lepo.co/wpfui/2022/xaml/design"
+    xmlns:helpers="clr-namespace:SmartLibraryManage.Helpers"
     xmlns:local="clr-namespace:SmartLibraryManage.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModel="clr-namespace:SmartLibraryManage.ViewModels.Pages"
+    xmlns:mui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:vm_page="clr-namespace:SmartLibraryManage.ViewModels.Pages"
+    xmlns:vm_page_setting="clr-namespace:SmartLibraryManage.ViewModels.Pages.SystemSettingManage"
     Title="LoginView"
-    d:DataContext="{d:DesignInstance viewModel:LoginViewModel}"
+    d:DataContext="{d:DesignInstance vm_page:LoginViewModel,
+                                     IsDesignTimeCreatable=True}"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    mc:Ignorable="d">
+    ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+    ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d dsui dsmui">
 
-    <Grid />
+    <Page.Resources>
+        <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ui:Button
+            Grid.Row="0"
+            Margin="0,5,10,0"
+            HorizontalAlignment="Right"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Appearance="Transparent"
+            BorderThickness="0,0,0,0"
+            Command="{Binding SettingOpenCommand, RelativeSource={RelativeSource AncestorType=Page}, Mode=OneWay}">
+            <ui:SymbolIcon Symbol="Settings48" />
+        </ui:Button>
+        <mui:SplitView
+            x:Name="SplitView"
+            Grid.Row="1"
+            DisplayMode="Overlay"
+            OpenPaneLength="600"
+            PaneBackground="{DynamicResource {x:Static mui:ThemeKeys.SolidBackgroundFillColorBaseBrushKey}}"
+            PanePlacement="Left">
+
+            <StackPanel>
+
+                <ui:TextBlock
+                    Margin="0,40,0,70"
+                    HorizontalAlignment="Center"
+                    FontSize="60"
+                    Text="智慧图书馆" />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15*" />
+                        <ColumnDefinition Width="90*" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <ui:TextBlock
+                        Grid.Row="0"
+                        Margin="0,10,0,5"
+                        VerticalAlignment="Center"
+                        dsui:Text="用户:"
+                        FontSize="20"
+                        Text="用户:" />
+                    <ui:TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,10,0,5"
+                        VerticalAlignment="Center"
+                        dsui:PlaceholderText="请输入账户...."
+                        PlaceholderText="请输入账户...."
+                        Text="{Binding Username, Mode=TwoWay}" />
+                    <ui:TextBlock
+                        Grid.Row="1"
+                        Margin="0,10,0,5"
+                        VerticalAlignment="Center"
+                        dsui:Text="密码:"
+                        FontSize="20"
+                        Text="密码:" />
+                    <ui:PasswordBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="0,10,0,5"
+                        VerticalAlignment="Center"
+                        dsui:PlaceholderText="请输入账户....."
+                        Password="{Binding Password, Mode=TwoWay}"
+                        PlaceholderText="请输入账户....." />
+                    <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="5*" />
+                        </Grid.ColumnDefinitions>
+                        <ui:Button
+                            Grid.Column="0"
+                            HorizontalAlignment="Stretch"
+                            Command="{Binding LoginCommand, Mode=OneWay}">
+                            登录
+                        </ui:Button>
+                        <ui:Button
+                            Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            Command="{Binding RegisterCommand, Mode=OneWay}">
+                            注册
+                        </ui:Button>
+
+                    </Grid>
+
+                </Grid>
+
+            </StackPanel>
+            <mui:SplitView.Pane>
+                <mui:ScrollViewerEx x:Name="Spilt_ViewContent" d:DataContext="{d:DesignInstance vm_page_setting:SettingsViewModel, IsDesignTimeCreatable=True}">
+                    <StackPanel>
+                        <TextBlock
+                            FontSize="50"
+                            FontWeight="Medium"
+                            Text="设置" />
+                        <TextBlock Margin="0,12,0,0" Text="主题样式" />
+                        <RadioButton
+                            Margin="0,12,0,0"
+                            Command="{Binding ChangeThemeCommand, Mode=OneWay}"
+                            CommandParameter="theme_light"
+                            Content="明亮"
+                            GroupName="themeSelect"
+                            IsChecked="{Binding CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}" />
+                        <RadioButton
+                            Margin="0,8,0,0"
+                            Command="{Binding ChangeThemeCommand, Mode=OneWay}"
+                            CommandParameter="theme_dark"
+                            Content="暗黑"
+                            GroupName="themeSelect"
+                            IsChecked="{Binding CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}" />
+                    </StackPanel>
+                </mui:ScrollViewerEx>
+            </mui:SplitView.Pane>
+        </mui:SplitView>
+    </Grid>
 </Page>

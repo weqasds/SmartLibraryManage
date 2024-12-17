@@ -13,6 +13,8 @@ using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
 using Shared.Services;
+using SmartLibraryManage.Views.Pages.SystemSettingManage;
+using SmartLibraryManage.ViewModels.Pages.SystemSettingManage;
 
 namespace SmartLibraryManage
 {
@@ -21,7 +23,7 @@ namespace SmartLibraryManage
     /// </summary>
     public partial class App
     {
-        private readonly LibraryDbContext _libraryDbContext=new LibraryDbContext();
+
         // The.NET Generic Host provides dependency injection, configuration, logging, and other services.
         // https://docs.microsoft.com/dotnet/core/extensions/generic-host
         // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
@@ -33,10 +35,27 @@ namespace SmartLibraryManage
             .ConfigureServices((context, services) =>
             {
                 services.AddHostedService<ApplicationHostService>();
+                #region 数据库上下文服务
+                services.AddDbContext<LibraryDbContext>(
+                    options =>
+                    {
+                        options.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=@qq13015461197;Database=LibraryManage;");
+                    }
+                );
+                #endregion
+                # region 数据库服务注册
+                services.GetServices(ServiceRole.Manage, new ServiceType[] {
+                    ServiceType.UserService,
+                    ServiceType.BookService,
+                    ServiceType.BorrowRecordService,
+                    ServiceType.FineService,
+                });
+
+                #endregion
 
                 // Page resolver service
                 services.AddSingleton<IPageService, PageService>();
-                //services.GetServices(new {1,2,3 });
+
                 // Theme manipulation
                 services.AddSingleton<IThemeService, ThemeService>();
 
@@ -75,7 +94,7 @@ namespace SmartLibraryManage
         private void OnStartup(object sender, StartupEventArgs e)
         {
             _host.Start();
-            
+
         }
 
         /// <summary>

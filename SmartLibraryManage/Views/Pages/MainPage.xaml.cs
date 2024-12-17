@@ -12,25 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UserLibrary.ViewModels.Pages;
 
-namespace UserLibrary.Views.Pages
+namespace SmartLibraryManage.Views.Pages
 {
     /// <summary>
-    /// LoginPage.xaml 的交互逻辑
+    /// MainPage.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class MainPage : Page
     {
-        public LoginPage(LoginViewModel viewModel,SettingsViewModel settingsViewModel)
+        public MainPage()
         {
-            DataContext = viewModel;
             InitializeComponent();
-            this.Spilt_ViewContent.DataContext = settingsViewModel;
-        }
-        [RelayCommand]
-        private void SettingOpen()
-        {
-            this.SplitView.IsPaneOpen = true;
         }
     }
 }

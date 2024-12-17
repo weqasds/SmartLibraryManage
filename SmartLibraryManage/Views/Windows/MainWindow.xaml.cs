@@ -7,7 +7,6 @@ namespace SmartLibraryManage.Views.Windows
 {
     public partial class MainWindow : INavigationWindow
     {
-        public MainWindowViewModel ViewModel { get; }
 
         public MainWindow(
             MainWindowViewModel viewModel,
@@ -15,8 +14,7 @@ namespace SmartLibraryManage.Views.Windows
             INavigationService navigationService
         )
         {
-            ViewModel = viewModel;
-            DataContext = this;
+            DataContext = viewModel;
 
             SystemThemeWatcher.Watch(this);
 

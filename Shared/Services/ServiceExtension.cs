@@ -83,16 +83,16 @@ namespace Shared.Services
                         switch (service)
                         {
                             case ServiceType.BookService:
-                                servicesCollection.AddSingleton<IService<Book>, UserImpl.BookService>();
+                                servicesCollection.AddSingleton<IService<Book>, ManageImpl.BookService>();
                                 break;
                             case ServiceType.BorrowRecordService:
-                                servicesCollection.AddSingleton<IService<Borrowrecord>, UserImpl.BorrowRecordService>();
+                                servicesCollection.AddSingleton<IService<Borrowrecord>, ManageImpl.BorrowRecordService>();
                                 break;
                             case ServiceType.FineService:
-                                servicesCollection.AddSingleton<IService<Fine>, UserImpl.FineService>();
+                                servicesCollection.AddSingleton<IService<Fine>, ManageImpl.FineService>();
                                 break;
                             case ServiceType.UserService:
-                                servicesCollection.AddSingleton<IService<User>, UserImpl.UserService>();
+                                servicesCollection.AddSingleton<IService<User>, ManageImpl.UserService>();
                                 break;
                             case ServiceType.LoggingService:
                                 break;

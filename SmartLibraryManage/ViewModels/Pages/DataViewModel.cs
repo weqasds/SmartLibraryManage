@@ -37,7 +37,7 @@ namespace SmartLibraryManage.ViewModels.Pages
                             )
                         )
                     }
-                );
+                );  
 
             Colors = colorCollection;
 

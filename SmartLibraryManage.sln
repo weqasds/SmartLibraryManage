@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDB", "TestDB\TestDB.csproj", "{BC0CA1E6-FBBD-4877-967B-B742F3DC6D2F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfTest", "WpfTest\WpfTest.csproj", "{145F9E37-F655-494A-A2FA-07EA19631A7C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{BC0CA1E6-FBBD-4877-967B-B742F3DC6D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC0CA1E6-FBBD-4877-967B-B742F3DC6D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC0CA1E6-FBBD-4877-967B-B742F3DC6D2F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{145F9E37-F655-494A-A2FA-07EA19631A7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{145F9E37-F655-494A-A2FA-07EA19631A7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{145F9E37-F655-494A-A2FA-07EA19631A7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{145F9E37-F655-494A-A2FA-07EA19631A7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -33,12 +33,13 @@ namespace UserLibrary
             .ConfigureServices((context, services) =>
             {
                 services.AddHostedService<ApplicationHostService>();
+                #region 数据库上下文服务
                 services.AddDbContext<LibraryDbContext>(
                     options => {
                         options.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=@qq13015461197;Database=LibraryManage;");
                     }
                 );
-                // Page resolver service
+                #endregion
                 #region 数据库服务注册
                 services.GetServices(
                     ServiceRole.User, 
@@ -49,8 +50,11 @@ namespace UserLibrary
                         ServiceType.FineService, 
                     } 
                     );
+                #if DEBUG
                 Debug.WriteLine(services.ToString());
+                #endif
                 #endregion
+                // Page resolver service
                 services.AddSingleton<IPageService, PageService>();
                 // Theme manipulation
                 services.AddSingleton<IThemeService, ThemeService>();

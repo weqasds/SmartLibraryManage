@@ -1,12 +1,49 @@
 ﻿成员变量使用小驼峰
-xmlns:dsui="http://schemas.lepo.co/wpfui/2022/xaml/design" 为WPFUI的设计时特性
 ObservablePorperty 特性 生成代码 https://learn.microsoft.com/zh-cn/dotnet/communitytoolkit/mvvm/generators/observableproperty
 RelayCommand 特性 生成代码 https://learn.microsoft.com/zh-cn/dotnet/communitytoolkit/mvvm/generators/relaycommand
 xmlns:vm_page="clr-namespace:UserLibrary.ViewModels.Pages" Page页面的ViewModel注释
+
+
+
+控件库的命名空间
 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" ModernUI库命名空间
+xmlns:dsui="http://schemas.lepo.co/wpfui/2022/xaml/design" 为WPFUI的设计时特性
 xmlns:mui="http://schemas.inkore.net/lib/ui/wpf/modern" iNokeModernUI库命名空间
 xmlns:dsmui="http://schemas.inkore.net/lib/ui/wpf/modern/design" iNokeModernUI设计时命名空间
-xmlns:dsui="http://schemas.lepo.co/wpfui/2022/xaml/design" ModernUI设计时命名空间
+
+设计时背景与前景
+ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 切换到后台新建窗口

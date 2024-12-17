@@ -1,7 +1,7 @@
 ﻿using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
-namespace SmartLibraryManage.ViewModels.Pages
+namespace SmartLibraryManage.ViewModels.Pages.SystemSettingManage
 {
     public partial class SettingsViewModel : ObservableObject, INavigationAware
     {

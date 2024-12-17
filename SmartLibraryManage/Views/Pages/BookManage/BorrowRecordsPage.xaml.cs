@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SmartLibraryManage.ViewModels.Pages
+namespace SmartLibraryManage.Views.Pages.BookManage
 {
     /// <summary>
-    /// RegisterUser.xaml 的交互逻辑
+    /// BorrowRecordsPage.xaml 的交互逻辑
     /// </summary>
-    public partial class RegisterUser : Page
+    public partial class BorrowRecordsPage : Page
     {
-        public RegisterUser()
+        public BorrowRecordsPage()
         {
             InitializeComponent();
         }
